@@ -1,12 +1,18 @@
 #include <stdio.h>
 #include <SDL3/SDL.h>
+#include <chip8.h>
 
 int main(int argc, char **argv)
 {
     // Window & renderer setup
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
         return 1;
-    SDL_Window *window = SDL_CreateWindow("Chip8 - Window", 640, 320, 0);
+
+    SDL_Window *window = SDL_CreateWindow(
+        EMULATOR_WINDOW_TITLE,
+        CHIP8_WIDTH * CHIP8_WINDOW_MULTIPLIER,
+        CHIP8_HEIGHT * CHIP8_WINDOW_MULTIPLIER, 0);
+
     if (!window)
         return 1;
     SDL_Renderer *renderer = SDL_CreateRenderer(window, NULL);
