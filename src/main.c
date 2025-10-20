@@ -4,6 +4,10 @@
 
 int main(int argc, char **argv)
 {
+    struct chip8 chip8;
+    chip8_memory_set(&chip8.memory, 0x400, 'Z');
+    printf("%c\n", chip8_memory_get(&chip8.memory, 50));
+
     // Window & renderer setup
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
         return 1;
